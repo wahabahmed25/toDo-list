@@ -1,0 +1,394 @@
+/* Body and Container */
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr; /* Sidebar and content layout */
+    grid-template-rows: auto 1fr; /* Header row and content row */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6; /* Light gray background for content area */
+    color: #333; /* Dark text color */
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Navbar */
+#navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    width: 220px;
+    background-color: #1e293b; /* Dark blue-gray background */
+    color: white;
+    border-right: 1px solid #e2e8f0;
+    height: 100vh;
+}
+
+#navbar h1, #navbar h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#navbar button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #3b82f6; /* Modern blue color for buttons */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 10px; /* Space between each navbar button */
+
+    transition: background-color 0.3s;
+}
+
+#navbar button:hover {
+    background-color: #2563eb; /* Slightly darker blue on hover */
+}
+
+#navbar h1 {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #e2e8f0; /* Light text for headers */
+}
+
+/* Content Area */
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: #f9fafb;
+}
+
+/* Add Task Button */
+.addTask-button {
+    border: 1px solid #d1d5db;
+    padding: 16px;
+    margin: 20px 0;
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.addTask-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Task Inputs */
+.task-title, .task-description, #assignInput, input[type='date'] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #333;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #1f2937; /* Darker color for labels */
+}
+
+/* Modal Overlay and Content */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close-button {
+    background-color: #9ca3af; /* Gray background */
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-button:hover {
+    background-color: #6b7280; /* Darker gray on hover */
+}
+
+/* Task Elements */
+.task-element {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.task-element:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 18px;
+    color: #1f2937;
+    transform: translateX(-13px);
+}
+
+.task-description {
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 5px;
+    transform: translateX(-13px);
+
+}
+
+.task-date {
+    font-size: 13px;
+    background-color: #f87171; /* Soft red */
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Project Buttons */
+.project-button {
+    background-color: #10b981; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 6px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    max-width: 120px;
+    text-align: center;
+    justify-content: center;
+}
+
+.project-button:hover {
+    background-color: #059669; /* Darker green on hover */
+}
+
+/* Project Button Container */
+#project-button-container {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 2px; /* Adds space between buttons */
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    text-align: center;
+}
+
+/* Style for the date input field */
+input[type='date'] {
+    width: 100px; /* Adjust width as needed */
+    padding: 5px; /* Less padding for compact size */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for the assigning input field */
+#assignInput {
+    width: 100px; /* Adjust width as needed */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for the trash button */
+.trash-button {
+    background-color: #ff4d4d; /* Red background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 8px 12px; /* Padding for better size */
+    font-size: 14px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+    display: inline-block; /* Inline-block for button-like behavior */
+    margin-left: 10px; /* Space between checkbox and button */
+}
+
+/* Hover effect for trash button */
+.trash-button:hover {
+    background-color: #e60000; /* Darker red when hovered */
+    transform: scale(1.1); /* Slightly grow the button */
+}
+
+/* Active (pressed) state */
+.trash-button:active {
+    background-color: #cc0000; /* Even darker red when clicked */
+    transform: scale(1.05); /* Slight shrink when clicked */
+}
+
+/* Focus state for accessibility */
+.trash-button:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.6); /* Add custom focus outline */
+}
+
+
+/* Style for the submit button */
+.submit-button {
+    margin-left: 8px;
+    background-color: #71d13a; /* Green background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for better size */
+    font-size: 12px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+    display: inline-block; /* Inline-block for button-like behavior */
+    margin-top: 10px; /* Space above the button */
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+    background-color: #368c00; /* Darker green when hovered */
+    transform: scale(1.05); /* Slightly grow the button */
+}
+
+/* Active (pressed) state */
+.submit-button:active {
+    background-color: #4ca814; /* Even darker green when clicked */
+    transform: scale(1.02); /* Slight shrink when clicked */
+}
+
+/* Focus state for accessibility */
+.submit-button:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 0 2px rgba(107, 242, 22, 0.6); /* Custom focus outline */
+}
+
+.modal-content-project {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 400px;
+    text-align: center;
+}
+
+/* Close Button */
+.close-button-project {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+/* Hover effect for close button */
+.close-button-project:hover {
+    background-color: darkred;
+}
+
+/* Submit Button */
+.submit-button-project {
+    background-color: #6ed130; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+.submit-button-project:hover {
+    background-color: #3e8e0f; /* Darker green on hover */
+}
+
+/* Input field for project name */
+.project-title {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    transform: translateX(-10px);
+
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* Style the checkbox */
+input[type="checkbox"] {
+    width: 20px;  /* Change the size */
+    height: 20px; /* Change the size */
+    border: 2px solid #6BF216; /* Add a border color */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    appearance: none; /* Remove default styling */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Style when checkbox is checked */
+input[type="checkbox"]:checked {
+    background-color: #6BF216; /* Change background color when checked */
+    border-color: #4CAF50; /* Change border color when checked */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Add a glowing effect */
+}
+
+/* Optional: Add a checkmark when checked */
+input[type="checkbox"]:checked::before {
+    content: '\2713'; /* Unicode character for checkmark */
+    font-size: 16px;
+    color: white; /* White checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the checkmark */
+}
